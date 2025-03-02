@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COMP003AFinalLibraryTrackingSystem", "COMP003AFinalLibraryTrackingSystem\COMP003AFinalLibraryTrackingSystem.csproj", "{42F63953-4851-40DF-A9BF-96E90183D4F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42F63953-4851-40DF-A9BF-96E90183D4F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42F63953-4851-40DF-A9BF-96E90183D4F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42F63953-4851-40DF-A9BF-96E90183D4F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42F63953-4851-40DF-A9BF-96E90183D4F7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
