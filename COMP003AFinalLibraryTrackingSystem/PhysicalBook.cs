@@ -23,7 +23,7 @@ internal class PhysicalBook : Book
         get { return _genre; }
         set // validation ensuring that the Genre's value is not empty
         {
-            if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrWhiteSpace(value))
             {
                 throw new ArgumentException("Genre cannot be empty. ");
             }
@@ -31,6 +31,7 @@ internal class PhysicalBook : Book
         }
     }
 
+    // Override GetDetails() from the Book abstract class
     public override void GetDetails()
     {
         Console.WriteLine("Physical Books include a Title, Author, ISBN, Publisher, Published year, Pages, and Genre. ");
