@@ -30,4 +30,9 @@ internal class PhysicalBook : Book
             _genre = value;
         }
     }
+
+    public override void GetDetails()
+    {
+        Console.WriteLine("Physical Books include a Title, Author, ISBN, Publisher, Published year, Pages, and Genre. ");
+    }
 }
