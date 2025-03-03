@@ -13,13 +13,13 @@ internal class EBook : Book
     /// Constructor 
     /// </summary>
     /// <param name="title"></param>
-    /// <param name="author"></param>
-    /// <param name="isbn"></param>
-    /// <param name="publisher"></param>
-    /// <param name="year"></param>
-    /// <param name="fileFormat"></param>
-    /// <param name="fileSize"></param>
-    public EBook(string title, string author, string isbn, string publisher, int year, string fileFormat, double fileSize)
+    /// <param name="author"></param> 
+    /// <param name="isbn"></param> 
+    /// <param name="publisher"></param> 
+    /// <param name="year"></param> 
+    /// <param name="fileFormat"></param> 
+    /// <param name="fileSize"></param> 
+    public EBook(string title, string author, string isbn, string publisher, int year, string fileFormat, double fileSize) 
     {
         Title = title;
         Author = author;
