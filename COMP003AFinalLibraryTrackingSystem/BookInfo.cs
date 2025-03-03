@@ -16,9 +16,10 @@ internal class BookInfo
     /// </summary>
     public static void AddBook()
     {
-        Console.WriteLine("Select the book type (1-5): ");
+        Console.WriteLine("\nSelect the book type: ");
         Console.WriteLine("1. Add a Physical Book \n2. Add a Comic Book \n3. Add an E-Book \n4. Add an Audio Book");
         Console.WriteLine("5. Cancel");
+        Console.Write("Enter your choice (1-5): ");
         string input = Console.ReadLine().Trim();
 
         try // Try-Catch for validation 
@@ -70,7 +71,7 @@ internal class BookInfo
             else if (input == "3") // adds an e book 
             {
                 // Ask user to enter information for an E-Book 
-                Console.WriteLine("\nEnter the Comic Book's details:");
+                Console.WriteLine("\nEnter the E-Book's details:");
                 Console.Write("Title: ");
                 string title = Console.ReadLine();
                 Console.Write("Author: ");
@@ -93,7 +94,7 @@ internal class BookInfo
             else if (input == "4") // adds an audio book 
             {
                 // Ask user to enter information for an Audio Book 
-                Console.WriteLine("\nEnter the Comic Book's details:");
+                Console.WriteLine("\nEnter the Audio Book's details:");
                 Console.Write("Title: ");
                 string title = Console.ReadLine();
                 Console.Write("Author: ");
@@ -139,9 +140,10 @@ internal class BookInfo
     /// </summary>
     public static void EditBook()
     {
-        Console.WriteLine("Select the book type (1-5): ");
+        Console.WriteLine("\nSelect the book type: ");
         Console.WriteLine("1. Edit a Physical Book \n2. Edit a Comic Book \n3. Edit an E-Book \n4. Edit an Audio Book");
         Console.WriteLine("5. Cancel");
+        Console.Write("Enter your choice (1-5): ");
         string input = Console.ReadLine().Trim();
 
         try // Try-Catch for validation
@@ -156,7 +158,7 @@ internal class BookInfo
                     }
                     else if (_physicalBooks.Count != 0)
                     {
-                        Console.WriteLine("Enter the ISBN of the Physical Book you want to edit: ");
+                        Console.WriteLine("\nEnter the ISBN of the Physical Book you want to edit: ");
                         string isbn = Console.ReadLine();
                         
                         // search for the isbn 
@@ -203,7 +205,7 @@ internal class BookInfo
                     }
                     else if (_comicBooks.Count != 0)
                     {
-                        Console.WriteLine("Enter the ISBN of the Comic Book you want to edit: ");
+                        Console.WriteLine("\nEnter the ISBN of the Comic Book you want to edit: ");
                         string isbn = Console.ReadLine();
                         
                         // search for the isbn 
@@ -247,7 +249,7 @@ internal class BookInfo
                     }
                     else if (_eBooks.Count != 0)
                     {
-                        Console.WriteLine("Enter the ISBN of the E-Book you want to edit: ");
+                        Console.WriteLine("\nEnter the ISBN of the E-Book you want to edit: ");
                         string isbn = Console.ReadLine();
                         
                         // search for the isbn 
@@ -294,7 +296,7 @@ internal class BookInfo
                     }
                     else if (_audioBooks.Count != 0)
                     {
-                        Console.WriteLine("Enter the ISBN of the Audio Book you want to edit: ");
+                        Console.WriteLine("\nEnter the ISBN of the Audio Book you want to edit: ");
                         string isbn = Console.ReadLine();
                         
                         // search for the isbn 
@@ -350,6 +352,192 @@ internal class BookInfo
         catch (Exception) 
         {
             Console.WriteLine("Invalid input. Try again.");  
+        }
+    }
+
+    /// <summary>
+    /// Method used to remove books with a mini menu asking the user for book type to remove.
+    /// </summary>
+    public static void RemoveBook()
+    {
+        Console.WriteLine("\nSelect the book type: ");
+        Console.WriteLine("1. Remove a Physical Book \n2. Remove a Comic Book \n3. Remove an E-Book \n4. Remove an Audio Book");
+        Console.WriteLine("5. Cancel");
+        Console.Write("Enter your choice (1-5): ");
+        string input = Console.ReadLine().Trim();
+
+        try // Try-Catch for validation
+        {
+            if (input == "1") // removes a physical book
+            {
+                try
+                {
+                    if (_physicalBooks.Count == 0) //tells user if no books in the category 
+                    {
+                        Console.WriteLine("There are no Physical Books. \nRedirecting to Main Menu... ");
+                    }
+                    else if (_physicalBooks.Count != 0)
+                    {
+                        Console.WriteLine("\nEnter the ISBN of the Physical Book you want to remove: ");
+                        string isbn = Console.ReadLine();
+                        
+                        // search for the isbn 
+                        PhysicalBook remove = _physicalBooks.Find(p => p.ISBN == isbn);
+
+                        _physicalBooks.Remove(remove);
+                        Console.WriteLine("Physical Book removed successfully.");
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("There was an error removing the Physical Book.\nRedirecting to Main Menu...");
+                }
+            }
+            else if (input == "2") // removes a comic book 
+            {
+                try
+                {
+                    if (_comicBooks.Count == 0) //tells user if no books in the category 
+                    {
+                        Console.WriteLine("There are no Comic Books. \nRedirecting to Main Menu... ");
+                    }
+                    else if (_comicBooks.Count != 0)
+                    {
+                        Console.WriteLine("\nEnter the ISBN of the Comic Book you want to remove: ");
+                        string isbn = Console.ReadLine();
+                        
+                        // search for the isbn 
+                        ComicBook remove = _comicBooks.Find(p => p.ISBN == isbn);
+
+                        _comicBooks.Remove(remove);
+                        Console.WriteLine("Comic Book removed successfully.");
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("There was an error removing the Comic Book.\nRedirecting to Main Menu...");
+                }
+            }
+            else if (input == "3") // removes an e-book 
+            {
+                try
+                {
+                    if (_eBooks.Count == 0) //tells user if no books in the category 
+                    {
+                        Console.WriteLine("There are no E-Books. \nRedirecting to Main Menu... ");
+                    }
+                    else if (_eBooks.Count != 0)
+                    {
+                        Console.WriteLine("\nEnter the ISBN of the E-Book you want to remove: ");
+                        string isbn = Console.ReadLine();
+                        
+                        // search for the isbn 
+                        EBook remove = _eBooks.Find(p => p.ISBN == isbn);
+
+                        _eBooks.Remove(remove);
+                        Console.WriteLine("E-Book removed successfully.");
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("There was an error removing the E-Book.\nRedirecting to Main Menu...");
+                }
+            }
+            else if (input == "4") // removes an audio book 
+            {
+                try
+                {
+                    if (_audioBooks.Count == 0) //tells user if no books in the category 
+                    {
+                        Console.WriteLine("There are no Audio Books. \nRedirecting to Main Menu... ");
+                    }
+                    else if (_audioBooks.Count != 0)
+                    {
+                        Console.WriteLine("\nEnter the ISBN of the Audio Book you want to remove: ");
+                        string isbn = Console.ReadLine();
+                        
+                        // search for the isbn 
+                        AudioBook remove = _audioBooks.Find(p => p.ISBN == isbn);
+
+                        _audioBooks.Remove(remove);
+                        Console.WriteLine("Audio Book removed successfully.");
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("There was an error removing the Audio Book.\nRedirecting to Main Menu...");
+                }
+            }
+            else if (input == "5") // Cancels and sends back to main menu 
+            {
+                Console.WriteLine("Redirecting to Main Menu... ");
+            }
+            else // If user selected anything other than 1-5 they will be sent to main menu 
+            {
+                Console.WriteLine("Invalid input. Must be a number 1-5.\nRedirecting to Main Menu... ");
+            }
+        }
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine($"{ex.Message} Try again.");
+        }
+        catch (Exception) 
+        {
+            Console.WriteLine("Invalid input. Try again.");  
+        }
+    }
+
+    /// <summary>
+    /// Method used to view books.
+    /// </summary>
+    public static void ViewBooks()
+    {
+        try
+        {
+            foreach (var book in _physicalBooks)
+            {
+                Console.Write($"\n - {book.GetType().Name}: Title: {book.Title}");
+                Console.Write($", Author: {book.Author}");
+                Console.Write($", ISBN: {book.ISBN}");
+                Console.Write($", Publisher: {book.Publisher}");
+                Console.Write($", Published Year: {book.PublishedYear}");
+                Console.Write($", Pages: {book.Pages}");
+                Console.Write($", Genre: {book.Genre}");
+            }
+            foreach (var book in _comicBooks)
+            {
+                Console.Write($"\n - {book.GetType().Name}: Title: {book.Title}");
+                Console.Write($", Author: {book.Author}");
+                Console.Write($", ISBN: {book.ISBN}");
+                Console.Write($", Publisher: {book.Publisher}");
+                Console.Write($", Published Year: {book.PublishedYear}");
+                Console.Write($", Series: {book.Series}");
+            }
+            foreach (var book in _eBooks)
+            {
+                Console.Write($"\n - {book.GetType().Name}: Title: {book.Title}");
+                Console.Write($", Author: {book.Author}");
+                Console.Write($", ISBN: {book.ISBN}");
+                Console.Write($", Publisher: {book.Publisher}");
+                Console.Write($", Published Year: {book.PublishedYear}");
+                Console.Write($", File Format: {book.FileFormat}");
+                Console.Write($", File Size: {book.FileSize} MB");
+            }
+            foreach (var book in _audioBooks)
+            {
+                Console.Write($"\n - {book.GetType().Name}: Title: {book.Title}");
+                Console.Write($", Author: {book.Author}");
+                Console.Write($", ISBN: {book.ISBN}");
+                Console.Write($", Publisher: {book.Publisher}");
+                Console.Write($", Published Year: {book.PublishedYear}");
+                Console.Write($", File Format: {book.FileFormat}");
+                Console.Write($", File Size: {book.FileSize} MB");
+                Console.Write($", Duration: {book.Duration}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error displaying Books: {ex.Message}");
         }
     }
 }
