@@ -45,21 +45,21 @@ class Program
                 int choice = int.Parse(Console.ReadLine());
                 if (choice == 1)
                 {
-                    BookInfo.AddBook();
+                    BookInfo.AddBook(); // Calls AddBook method from BookInfo class 
                 }
                 else if (choice == 2)
                 {
-                    BookInfo.EditBook();
+                    BookInfo.EditBook(); // Calls EditBook method from BookInfo class 
                 }
                 else if (choice == 3)
                 {
-                    BookInfo.RemoveBook();
+                    BookInfo.RemoveBook(); // Calls RemoveBook method from BookInfo class 
                 }
                 else if (choice == 4)
                 {
-                    BookInfo.ViewBooks();
+                    BookInfo.ViewBooks(); // Calls ViewBook method from BookInfo class 
                 }
-                else if (choice == 5)
+                else if (choice == 5) // used for displaying the descriptions of each book type 
                 {
                     Book PhysicalBook = new PhysicalBook();
                     Book ComicBook = new ComicBook();
@@ -75,7 +75,7 @@ class Program
                     EDescriptions.EDescription(bookType1, description);
                     EDescriptions.EDescription(bookType2, description, description2);
                 }
-                else if (choice == 6)
+                else if (choice == 6) // ends the program 
                 {
                     Console.WriteLine("\nGoodbye!");
                     exit = false;
