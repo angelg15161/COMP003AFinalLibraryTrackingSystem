@@ -6,16 +6,15 @@ namespace COMP003AFinalLibraryTrackingSystem;
 internal class BookInfo
 {
     // Lists used to store book info 
-    private List<PhysicalBook> _physicalBooks = new List<PhysicalBook>();
-    private List<ComicBook> _comicBooks = new List<ComicBook>();
-    private List<EBook> _eBooks = new List<EBook>();
-    private List<AudioBook> _audioBooks = new List<AudioBook>();
+    private static List<PhysicalBook> _physicalBooks = new List<PhysicalBook>();
+    private static List<ComicBook> _comicBooks = new List<ComicBook>();
+    private static List<EBook> _eBooks = new List<EBook>();
+    private static List<AudioBook> _audioBooks = new List<AudioBook>();
 
     /// <summary>
-    /// Method used as mini menu asking the user for book type to add. 
+    /// Method used to add books with a mini menu asking the user for book type to add. 
     /// </summary>
-    /// <param name="bookType"></param>
-    public void AddBook(string bookType)
+    public static void AddBook()
     {
         Console.WriteLine("Select the book type (1-5): ");
         Console.WriteLine("1. Add a Physical Book \n2. Add a Comic Book \n3. Add an E-Book \n4. Add an Audio Book");
@@ -115,6 +114,225 @@ internal class BookInfo
                 // Add to E Books list 
                 _audioBooks.Add(new AudioBook(title, author, isbn, publisher, year, fileFormat, fileSize, duration));
                 Console.WriteLine("The Audio Book has been successfully added! ");
+            }
+            else if (input == "5") // Cancels and sends back to main menu 
+            {
+                Console.WriteLine("Redirecting to Main Menu... ");
+            }
+            else // If user selected anything other than 1-5 they will be sent to main menu 
+            {
+                Console.WriteLine("Invalid input. Must be a number 1-5.\nRedirecting to Main Menu... ");
+            }
+        }
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine($"{ex.Message} Try again.");
+        }
+        catch (Exception) 
+        {
+            Console.WriteLine("Invalid input. Try again.");  
+        }
+    }
+
+    /// <summary>
+    /// Method used to edit books with a mini menu asking the user for book type to edit.
+    /// </summary>
+    public static void EditBook()
+    {
+        Console.WriteLine("Select the book type (1-5): ");
+        Console.WriteLine("1. Edit a Physical Book \n2. Edit a Comic Book \n3. Edit an E-Book \n4. Edit an Audio Book");
+        Console.WriteLine("5. Cancel");
+        string input = Console.ReadLine().Trim();
+
+        try // Try-Catch for validation
+        {
+            if (input == "1") // edits a physical book
+            {
+                try
+                {
+                    if (_physicalBooks.Count == 0) //tells user if no books in the category 
+                    {
+                        Console.WriteLine("There are no Physical Books. \nRedirecting to Main Menu... ");
+                    }
+                    else if (_physicalBooks.Count != 0)
+                    {
+                        Console.WriteLine("Enter the ISBN of the Physical Book you want to edit: ");
+                        string isbn = Console.ReadLine();
+                        
+                        // search for the isbn 
+                        PhysicalBook edit = _physicalBooks.Find(p => p.ISBN == isbn);
+                            
+                        // prompt the user to enter the new info for Physical Book 
+                        Console.WriteLine("Enter the new details for the Physical Book: ");
+                        Console.Write("Title: ");
+                        string title = Console.ReadLine();
+                        Console.Write("Author: ");
+                        string author = Console.ReadLine();
+                        Console.Write("Publisher: ");
+                        string publisher = Console.ReadLine();
+                        Console.Write("Published Year: ");
+                        int year = int.Parse(Console.ReadLine());
+                        Console.Write("Pages: ");
+                        int pages = int.Parse(Console.ReadLine());
+                        Console.Write("Genre: ");
+                        string genre = Console.ReadLine();
+                        
+                        // Update the book info
+                        edit.Title = title;
+                        edit.Author = author;
+                        edit.Publisher = publisher;
+                        edit.PublishedYear = year;
+                        edit.Pages = pages;
+                        edit.Genre = genre;
+                        
+                        Console.WriteLine("The Physical Book has been successfully edited! ");
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("There was an error editing the Physical Book.\nRedirecting to Main Menu...");
+                }
+            }
+            else if (input == "2") // edits a comic book 
+            {
+                try
+                {
+                    if (_comicBooks.Count == 0) //tells user if no books in the category 
+                    {
+                        Console.WriteLine("There are no Comic Books. \nRedirecting to Main Menu... ");
+                    }
+                    else if (_comicBooks.Count != 0)
+                    {
+                        Console.WriteLine("Enter the ISBN of the Comic Book you want to edit: ");
+                        string isbn = Console.ReadLine();
+                        
+                        // search for the isbn 
+                        ComicBook edit = _comicBooks.Find(p => p.ISBN == isbn);
+                        
+                        // prompt the user to enter the new info for Comic Book 
+                        Console.WriteLine("Enter the new details for the Comic Book: ");
+                        Console.Write("Title: ");
+                        string title = Console.ReadLine();
+                        Console.Write("Author: ");
+                        string author = Console.ReadLine();
+                        Console.Write("Publisher: ");
+                        string publisher = Console.ReadLine();
+                        Console.Write("Published Year: ");
+                        int year = int.Parse(Console.ReadLine());
+                        Console.Write("Series: ");
+                        string series = Console.ReadLine();
+                        
+                        // Update the book info
+                        edit.Title = title;
+                        edit.Author = author;
+                        edit.Publisher = publisher;
+                        edit.PublishedYear = year;
+                        edit.Series = series;
+                        
+                        Console.WriteLine("The Comic Book has been successfully edited! ");
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("There was an error editing the Comic Book.\nRedirecting to Main Menu...");
+                }
+            }
+            else if (input == "3") // edits an e-book 
+            {
+                try
+                {
+                    if (_eBooks.Count == 0) //tells user if no books in the category 
+                    {
+                        Console.WriteLine("There are no E-Books. \nRedirecting to Main Menu... ");
+                    }
+                    else if (_eBooks.Count != 0)
+                    {
+                        Console.WriteLine("Enter the ISBN of the E-Book you want to edit: ");
+                        string isbn = Console.ReadLine();
+                        
+                        // search for the isbn 
+                        EBook edit = _eBooks.Find(p => p.ISBN == isbn);
+                        
+                        // prompt the user to enter the new info for E-Book 
+                        Console.WriteLine("Enter the new details for the E-Book: ");
+                        Console.Write("Title: ");
+                        string title = Console.ReadLine();
+                        Console.Write("Author: ");
+                        string author = Console.ReadLine();
+                        Console.Write("Publisher: ");
+                        string publisher = Console.ReadLine();
+                        Console.Write("Published Year: ");
+                        int year = int.Parse(Console.ReadLine());
+                        Console.Write("File Format: ");
+                        string fileFormat = Console.ReadLine();
+                        Console.Write("File Size (MB): ");
+                        double fileSize = double.Parse(Console.ReadLine());
+                        
+                        // Update the book info
+                        edit.Title = title;
+                        edit.Author = author;
+                        edit.Publisher = publisher;
+                        edit.PublishedYear = year;
+                        edit.FileFormat = fileFormat;
+                        edit.FileSize = fileSize;
+                        
+                        Console.WriteLine("The E-Book has been successfully edited! ");
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("There was an error editing the E-Book.\nRedirecting to Main Menu...");
+                }
+            }
+            else if (input == "4") // edits an audio book 
+            {
+                try
+                {
+                    if (_audioBooks.Count == 0) //tells user if no books in the category 
+                    {
+                        Console.WriteLine("There are no Audio Books. \nRedirecting to Main Menu... ");
+                    }
+                    else if (_audioBooks.Count != 0)
+                    {
+                        Console.WriteLine("Enter the ISBN of the Audio Book you want to edit: ");
+                        string isbn = Console.ReadLine();
+                        
+                        // search for the isbn 
+                        AudioBook edit = _audioBooks.Find(p => p.ISBN == isbn);
+                        
+                        // prompt the user to enter the new info for the Audio Book 
+                        Console.WriteLine("Enter the new details for the Audio Book: ");
+                        Console.Write("Title: ");
+                        string title = Console.ReadLine();
+                        Console.Write("Author: ");
+                        string author = Console.ReadLine();
+                        Console.Write("Publisher: ");
+                        string publisher = Console.ReadLine();
+                        Console.Write("Published Year: ");
+                        int year = int.Parse(Console.ReadLine());
+                        Console.Write("File Format: ");
+                        string fileFormat = Console.ReadLine();
+                        Console.Write("File Size (MB): ");
+                        double fileSize = double.Parse(Console.ReadLine());
+                        Console.Write("Duration: ");
+                        string duration = Console.ReadLine();
+                        
+                        // Update the book info
+                        edit.Title = title;
+                        edit.Author = author;
+                        edit.Publisher = publisher;
+                        edit.PublishedYear = year;
+                        edit.FileFormat = fileFormat;
+                        edit.FileSize = fileSize;
+                        edit.Duration = duration;
+                        
+                        Console.WriteLine("The Audio Book has been successfully edited! ");
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("There was an error editing the Audio Book.\nRedirecting to Main Menu...");
+                }
             }
             else if (input == "5") // Cancels and sends back to main menu 
             {
