@@ -9,7 +9,30 @@ internal class AudioBook : Book
     private string _duration; 
     private string _fileFormat; 
     private double _fileSize;
-    
+
+    /// <summary>
+    /// Constructor 
+    /// </summary>
+    /// <param name="title"></param>
+    /// <param name="author"></param>
+    /// <param name="isbn"></param>
+    /// <param name="publisher"></param>
+    /// <param name="year"></param>
+    /// <param name="fileFormat"></param>
+    /// <param name="fileSize"></param>
+    /// <param name="duration"></param>
+    public AudioBook(string title, string author, string isbn, string publisher, int year, string fileFormat, double fileSize, string duration)
+    {
+        Title = title;
+        Author = author;
+        ISBN = isbn;
+        Publisher = publisher;
+        PublishedYear = year;
+        FileFormat = fileFormat;
+        FileSize = fileSize;
+        Duration = duration;
+    }
+
     // Properties (public) with implementation and validation
     public string Duration
     {
