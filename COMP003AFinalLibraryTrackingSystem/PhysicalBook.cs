@@ -7,7 +7,34 @@ internal class PhysicalBook : Book
 {
     // fields (private)
     private int _pages;
-    private string _genre; 
+    private string _genre;
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="title"></param>
+    /// <param name="author"></param>
+    /// <param name="isbn"></param>
+    /// <param name="publisher"></param>
+    /// <param name="year"></param>
+    /// <param name="pages"></param>
+    /// <param name="genre"></param>
+    public PhysicalBook(string title, string author, string isbn, string publisher, int year, int pages, string genre)
+    {
+        Title = title;
+        Author = author;
+        ISBN = isbn;
+        Publisher = publisher;
+        PublishedYear = year;
+        Pages = pages;
+        Genre = genre;
+    }
+
+    // Constructor for override
+    public PhysicalBook()
+    {
+        ;
+    }
 
     // Properties (public) with implementation and validation 
     public int Pages
@@ -34,6 +61,6 @@ internal class PhysicalBook : Book
     // Override GetDetails() from the Book abstract class
     public override void GetDetails()
     {
-        Console.WriteLine("Physical Books include a Title, Author, ISBN, Publisher, Published year, Pages, and Genre. ");
+        Console.WriteLine("\nPhysical Books include a Title, Author, ISBN, Publisher, Published year, Pages, Genre ");
     }
 }
